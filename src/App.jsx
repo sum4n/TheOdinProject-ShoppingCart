@@ -1,10 +1,11 @@
-import Navigation from "./components/Navigation";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
+import HomePageBody from "./components/HomePageBody";
 
 function App() {
   return (
     <>
-      <Navigation />
-      <h1>Project: Shopping Cart</h1>
+      <NavigationBar />
+      <HomePageBody />
     </>
   );
 }

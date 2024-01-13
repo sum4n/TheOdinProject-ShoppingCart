@@ -1,8 +1,10 @@
-const Navigation = () => {
+import styles from "./NavigationBar.module.css";
+
+const NavigationBar = () => {
   return (
-    <nav>
-      <p>The shopping project</p>
-      <ul>
+    <nav className={styles.nav}>
+      <p className={styles.title}>The shopping project</p>
+      <ul className={styles.list}>
         <li>
           <a href="#">Home</a>
         </li>
@@ -18,4 +20,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default NavigationBar;
