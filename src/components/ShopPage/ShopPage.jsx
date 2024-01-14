@@ -1,11 +1,12 @@
 import ShopItems from "../ShopItems/ShopItems";
+import styles from "./ShopPage.module.css";
 
 const ShopPage = () => {
   return (
-    <div>
+    <div className={styles.shopPageBody}>
       <p>This is shop page</p>
-      <div>
-        <div>
+      <div className={styles.shopPageContents}>
+        <div className={styles.shopPageItems}>
           <ShopItems />
           <ShopItems />
           <ShopItems />

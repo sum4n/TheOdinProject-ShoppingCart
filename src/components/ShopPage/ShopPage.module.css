@@ -1,0 +1,20 @@
+.shopPageBody {
+  /* border: 2px solid rgba(0, 0, 0, 0.164); */
+  border-radius: 6px;
+  margin: 1% 2% 0% 2%;
+  box-shadow: 0px 0px 8px rgb(63, 63, 63);
+
+  text-align: center;
+}
+
+.shopPageContents {
+  display: flex;
+  padding: 2%;
+}
+
+.shopPageItems {
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
