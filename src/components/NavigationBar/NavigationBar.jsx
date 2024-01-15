@@ -1,4 +1,5 @@
 import styles from "./NavigationBar.module.css";
+import { Link } from "react-router-dom";
 
 const NavigationBar = () => {
   return (
@@ -6,10 +7,10 @@ const NavigationBar = () => {
       <p className={styles.title}>The shopping project</p>
       <ul className={styles.list}>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Products</a>
+          <Link to="shopPage">Products</Link>
         </li>
         <li>
           <a href="#">Contact</a>
