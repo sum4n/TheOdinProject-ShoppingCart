@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <NavigationBar />
-      {/* <HomePageBody /> */}
+      <HomePageBody />
       <ShopPage />
     </>
   );

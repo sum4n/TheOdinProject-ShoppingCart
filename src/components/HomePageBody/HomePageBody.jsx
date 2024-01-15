@@ -6,9 +6,11 @@ const HomePageBody = () => {
     <div className={styles.body}>
       <div className={styles.divText}>
         <p>Welcome to Odin Project Shopping Cart</p>
-        <button>Shop</button>
+        <a className={styles.btnShop} href="shopPage">
+          Shop
+        </a>
       </div>
-      <img src={image} alt="a shopping cart" />
+      <img className={styles.imgHomeBody} src={image} alt="a shopping cart" />
     </div>
   );
 };
