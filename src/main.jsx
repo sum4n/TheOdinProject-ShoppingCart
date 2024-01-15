@@ -5,11 +5,13 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ShopPage from "./components/ShopPage/ShopPage.jsx";
 import "./index.css";
 import HomePageBody from "./components/HomePageBody/HomePageBody.jsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePageBody />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "shopPage",
