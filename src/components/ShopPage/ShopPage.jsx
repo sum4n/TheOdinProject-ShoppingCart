@@ -1,4 +1,5 @@
 import ShopItems from "../ShopItems/ShopItems";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import styles from "./ShopPage.module.css";
 
 const ShopPage = () => {
@@ -14,7 +15,7 @@ const ShopPage = () => {
           <ShopItems />
           <ShopItems />
         </div>
-        <div>Cart</div>
+        <ShoppingCart />
       </div>
     </div>
   );

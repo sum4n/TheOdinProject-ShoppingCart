@@ -1,0 +1,10 @@
+.cartBody {
+  min-width: 350px;
+
+  border-radius: 6px;
+  box-shadow: 0px 0px 8px rgb(63, 63, 63);
+}
+
+.btnCheckout {
+  font-weight: normal;
+}
