@@ -1,10 +1,11 @@
 import styles from "./ShopItems.module.css";
 
-const ShopItems = () => {
+const ShopItems = ({ title, price, imgSource }) => {
   return (
     <div className={styles.shopItem}>
-      <p className={styles.itemTitle}>Title</p>
-      <img className={styles.itemImg} src="#" alt="This is shop item" />
+      <p className={styles.itemTitle}>{title}</p>
+      <img className={styles.itemImg} src={imgSource} alt="This is shop item" />
+      <p className={styles.priceText}>Price: {price}</p>
       <div>
         <label className={styles.inputLabel} htmlFor="quantity">
           Quantity

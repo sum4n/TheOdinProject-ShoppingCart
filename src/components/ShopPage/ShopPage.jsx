@@ -34,15 +34,17 @@ const ShopPage = () => {
           <div className={styles.shopPageItems}>
             {error && <p>A network error was encountered.</p>}
             {loading && <p>Loading...</p>}
-            <ShopItems />
-            <ShopItems />
-            <ShopItems />
-            <ShopItems />
-            <ShopItems />
-            <ShopItems />
+
             {data &&
               data.map((item) => {
-                return <li key={item.id}>{item.title}</li>;
+                return (
+                  <ShopItems
+                    key={item.id}
+                    title={item.title}
+                    price={item.price}
+                    imgSource={item.image}
+                  />
+                );
               })}
           </div>
           <ShoppingCart />
