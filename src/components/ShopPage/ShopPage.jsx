@@ -29,7 +29,6 @@ const ShopPage = () => {
     <>
       <NavigationBar />
       <div className={styles.shopPageBody}>
-        <p>This is shop page</p>
         <div className={styles.shopPageContents}>
           <div className={styles.shopPageItems}>
             {error && <p>A network error was encountered.</p>}
@@ -41,6 +40,8 @@ const ShopPage = () => {
                   <ShopItems
                     key={item.id}
                     title={item.title}
+                    description={item.description}
+                    rating={item.rating}
                     price={item.price}
                     imgSource={item.image}
                   />
