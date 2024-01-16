@@ -12,6 +12,7 @@
 .shopPageContents {
   display: flex;
   padding: 2%;
+  gap: 20px;
 }
 
 .shopPageItems {
