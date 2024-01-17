@@ -8,6 +8,7 @@ const ShopPage = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [itemsInCart, setItemsInCart] = useState(0);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
@@ -25,9 +26,14 @@ const ShopPage = () => {
   if (data) {
     console.log(data);
   }
+
+  const handleAddToCart = () => {
+    setItemsInCart(() => itemsInCart + 1);
+  };
+
   return (
     <>
-      <NavigationBar />
+      <NavigationBar itemsInCart={itemsInCart} />
       <div className={styles.shopPageBody}>
         <div className={styles.shopPageContents}>
           <div className={styles.shopPageItems}>
@@ -44,6 +50,7 @@ const ShopPage = () => {
                     rating={item.rating}
                     price={item.price}
                     imgSource={item.image}
+                    handleAddToCart={handleAddToCart}
                   />
                 );
               })}

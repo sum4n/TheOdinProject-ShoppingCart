@@ -1,7 +1,7 @@
 import styles from "./NavigationBar.module.css";
 import { Link } from "react-router-dom";
 
-const NavigationBar = () => {
+const NavigationBar = ({ itemsInCart }) => {
   return (
     <nav className={styles.nav}>
       <p className={styles.title}>The shopping project</p>
@@ -16,7 +16,7 @@ const NavigationBar = () => {
           <a href="#">Contact</a>
         </li>
       </ul>
-      <p>Cart: {0}</p>
+      <p>Cart: {itemsInCart}</p>
     </nav>
   );
 };

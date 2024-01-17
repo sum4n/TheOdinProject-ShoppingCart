@@ -1,6 +1,13 @@
 import styles from "./ShopItems.module.css";
 
-const ShopItems = ({ title, description, rating, price, imgSource }) => {
+const ShopItems = ({
+  title,
+  description,
+  rating,
+  price,
+  imgSource,
+  handleAddToCart,
+}) => {
   return (
     <div className={styles.shopItem}>
       <img className={styles.itemImg} src={imgSource} alt="This is shop item" />
@@ -25,7 +32,7 @@ const ShopItems = ({ title, description, rating, price, imgSource }) => {
             defaultValue={1}
           />
         </div>
-        <button>Add to cart</button>
+        <button onClick={handleAddToCart}>Add to cart</button>
       </div>
     </div>
   );
