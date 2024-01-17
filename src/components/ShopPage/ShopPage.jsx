@@ -58,7 +58,7 @@ const ShopPage = () => {
                 );
               })}
           </div>
-          <ShoppingCart />
+          <ShoppingCart cartItems={itemsInCart} />
         </div>
       </div>
     </>
