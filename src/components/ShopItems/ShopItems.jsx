@@ -2,6 +2,7 @@ import styles from "./ShopItems.module.css";
 
 const ShopItems = ({
   title,
+  index,
   description,
   rating,
   price,
@@ -32,7 +33,9 @@ const ShopItems = ({
             defaultValue={1}
           />
         </div>
-        <button onClick={handleAddToCart}>Add to cart</button>
+        <button id={index} onClick={handleAddToCart}>
+          Add to cart
+        </button>
       </div>
     </div>
   );
