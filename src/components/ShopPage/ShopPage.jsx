@@ -4,28 +4,9 @@ import styles from "./ShopPage.module.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import { useEffect, useState } from "react";
 
-const ShopPage = () => {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+const ShopPage = ({ fetchData }) => {
   const [itemsInCart, setItemsInCart] = useState([]);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products", { mode: "cors" })
-      .then((res) => {
-        if (res.status >= 400) {
-          throw new Error("server error");
-        }
-        return res.json();
-      })
-      .then((json) => setData(json))
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (data) {
-    console.log(data);
-  }
+  const { data, error, loading } = fetchData();
 
   const handleAddToCart = (e) => {
     // don't mutate the array
