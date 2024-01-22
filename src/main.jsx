@@ -8,14 +8,15 @@ import HomePageBody from "./components/HomePageBody/HomePageBody.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
 import { useState, useEffect } from "react";
 
-// const handleAddToCart = (e) => {
-//   const [itemsInCart, setItemsInCart] = useState([]);
-
-//   setItemsInCart([...itemsInCart, data[e.target.id - 1]]);
-//   console.lod(itemsInCart);
-
-//   return itemsInCart;
-// };
+const handleAddToCart = () => {
+  const [itemsInCart, setItemsInCart] = useState([]);
+  function addToCart(e, data) {
+    setItemsInCart([...itemsInCart, data[e.target.id - 1]]);
+    console.log(e);
+  }
+  // console.log(e);
+  return { itemsInCart, addToCart };
+};
 
 const fetchData = () => {
   const [data, setData] = useState(null);
@@ -43,7 +44,7 @@ const fetchData = () => {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePageBody />,
+    element: <HomePageBody handleAddToCart={handleAddToCart} />,
     errorElement: <ErrorPage />,
   },
   {
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     element: (
       <ShopPage
         fetchData={fetchData}
-        // handleAddToCart={handleAddToCart}
+        handleAddToCart={handleAddToCart}
         // itemsInCart={itemsInCart}
       />
     ),

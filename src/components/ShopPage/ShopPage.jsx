@@ -4,15 +4,10 @@ import styles from "./ShopPage.module.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import { useEffect, useState } from "react";
 
-const ShopPage = ({ fetchData }) => {
-  const [itemsInCart, setItemsInCart] = useState([]);
+const ShopPage = ({ fetchData, handleAddToCart }) => {
   const { data, error, loading } = fetchData();
 
-  const handleAddToCart = (e) => {
-    // don't mutate the array
-    setItemsInCart([...itemsInCart, data[e.target.id - 1]]);
-    console.log(itemsInCart);
-  };
+  const { itemsInCart, addToCart } = handleAddToCart();
 
   return (
     <>
@@ -34,7 +29,7 @@ const ShopPage = ({ fetchData }) => {
                     rating={item.rating}
                     price={item.price}
                     imgSource={item.image}
-                    handleAddToCart={handleAddToCart}
+                    handleAddToCart={(e) => addToCart(e, data)}
                   />
                 );
               })}

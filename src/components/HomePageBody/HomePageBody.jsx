@@ -3,10 +3,11 @@ import image from "./shopping_cart.webp";
 import { Link } from "react-router-dom";
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-const HomePageBody = () => {
+const HomePageBody = ({ handleAddToCart }) => {
+  const { itemsInCart } = handleAddToCart();
   return (
     <>
-      <NavigationBar />
+      <NavigationBar itemsInCart={itemsInCart.length} />
       <div className={styles.body}>
         <div className={styles.divText}>
           <p>Welcome to Odin Project Shopping Cart</p>
