@@ -1,17 +1,13 @@
 import ShopItems from "../ShopItems/ShopItems";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import styles from "./ShopPage.module.css";
-import NavigationBar from "../NavigationBar/NavigationBar";
-import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 
-const ShopPage = ({ fetchData, handleAddToCart }) => {
-  const { data, error, loading } = fetchData();
-
-  const { itemsInCart, addToCart } = handleAddToCart();
+const ShopPage = () => {
+  const [data, error, loading, itemsInCart, addToCart] = useOutletContext();
 
   return (
     <>
-      <NavigationBar itemsInCart={itemsInCart.length} />
       <div className={styles.shopPageBody}>
         <div className={styles.shopPageContents}>
           <div className={styles.shopPageItems}>

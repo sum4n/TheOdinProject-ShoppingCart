@@ -1,5 +1,6 @@
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,6 +21,8 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
+  console.log(data);
+
   const addToCart = (e, data) => {
     setItemsInCart([...itemsInCart, data[e.target.id - 1]]);
     console.log(e);
@@ -28,6 +31,7 @@ function App() {
   return (
     <>
       <NavigationBar itemsInCart={itemsInCart.length} />
+      <Outlet context={[data, error, loading, itemsInCart, addToCart]} />
     </>
   );
 }

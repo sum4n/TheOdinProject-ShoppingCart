@@ -6,13 +6,16 @@ import ShopPage from "./components/ShopPage/ShopPage.jsx";
 import "./index.css";
 import HomePageBody from "./components/HomePageBody/HomePageBody.jsx";
 import ErrorPage from "./components/ErrorPage/ErrorPage.jsx";
-import { useState, useEffect } from "react";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      { index: true, element: <HomePageBody /> }, // HomePageBody will be rendered by default
+      { path: "shopPage", element: <ShopPage /> },
+    ],
   },
 ]);
 
