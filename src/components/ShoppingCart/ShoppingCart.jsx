@@ -1,6 +1,15 @@
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = ({ cartItems }) => {
+  console.log(cartItems);
+
+  let total = 0;
+  if (cartItems.length != 0) {
+    for (let i = 0; i < cartItems.length; i++) {
+      total += cartItems[i].price;
+    }
+  }
+
   return (
     <div className={styles.cartBody}>
       <p>Items in your shopping cart</p>
@@ -9,7 +18,7 @@ const ShoppingCart = ({ cartItems }) => {
           return <li key={item.id}>{item.title}</li>;
         })}
       </ol>
-      <p>Total amount: {100} $</p>
+      <p>Total amount: {Math.round(total * 100) / 100}$</p>
       <button className={styles.btnCheckout}>Checkout</button>
     </div>
   );
