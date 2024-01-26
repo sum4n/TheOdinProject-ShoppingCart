@@ -15,7 +15,13 @@ const ShoppingCart = ({ cartItems }) => {
       <p>Items in your shopping cart</p>
       <ol>
         {cartItems.map((item) => {
-          return <li key={item.id}>{item.title}</li>;
+          return (
+            <li key={item.id}>
+              {item.title}
+              {" X"}
+              {item.quantity}
+            </li>
+          );
         })}
       </ol>
       <p>Total amount: {Math.round(total * 100) / 100}$</p>

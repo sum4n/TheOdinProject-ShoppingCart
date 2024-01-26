@@ -23,18 +23,24 @@ function App() {
 
   const addToCart = (e, data) => {
     let clickedItem = data[e.target.id - 1];
+    // get quantity from Input Quantity
+    let quantity = parseInt(e.target.previousSibling.children[1].value);
     // If item is unique add it to cart, else increase its quantity
     if (!itemsInCart.includes(clickedItem)) {
-      // All items gets quantity property with value 1
-      clickedItem.quantity = 1;
+      // All items objects gets quantity "property" with value input quantity
+      clickedItem.quantity = quantity;
       setItemsInCart([...itemsInCart, clickedItem]);
     } else {
       let indexOfIncreasedProduct = itemsInCart.indexOf(clickedItem);
-      itemsInCart[indexOfIncreasedProduct].quantity += 1;
+      itemsInCart[indexOfIncreasedProduct].quantity += quantity;
       setItemsInCart([...itemsInCart]);
     }
+    // console.log(e.target.previousSibling.children[1].value);
     // console.log(clickedItem);
     // console.log(itemsInCart);
+
+    // resets the Quantity input value to 1
+    e.target.previousSibling.children[1].value = 1;
   };
 
   return (
