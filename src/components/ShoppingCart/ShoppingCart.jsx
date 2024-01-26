@@ -1,7 +1,7 @@
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = ({ cartItems }) => {
-  console.log(cartItems);
+  // console.log(cartItems);
 
   let total = 0;
   if (cartItems.length != 0) {

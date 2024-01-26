@@ -21,11 +21,20 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  console.log(data);
-
   const addToCart = (e, data) => {
-    setItemsInCart([...itemsInCart, data[e.target.id - 1]]);
-    console.log(e);
+    let clickedItem = data[e.target.id - 1];
+    // If item is unique add it to cart, else increase its quantity
+    if (!itemsInCart.includes(clickedItem)) {
+      // All items gets quantity property with value 1
+      clickedItem.quantity = 1;
+      setItemsInCart([...itemsInCart, clickedItem]);
+    } else {
+      let indexOfIncreasedProduct = itemsInCart.indexOf(clickedItem);
+      itemsInCart[indexOfIncreasedProduct].quantity += 1;
+      setItemsInCart([...itemsInCart]);
+    }
+    // console.log(clickedItem);
+    // console.log(itemsInCart);
   };
 
   return (
