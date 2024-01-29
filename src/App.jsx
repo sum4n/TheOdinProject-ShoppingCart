@@ -43,9 +43,18 @@ function App() {
     e.target.previousSibling.children[1].value = 1;
   };
 
+  let totalItems = 0;
+  if (itemsInCart.length != 0) {
+    for (let i = 0; i < itemsInCart.length; i++) {
+      totalItems += itemsInCart[i].quantity;
+    }
+  }
+
+  // console.log({ totalItems });
+
   return (
     <>
-      <NavigationBar itemsInCart={itemsInCart.length} />
+      <NavigationBar itemsInCart={totalItems} />
       <Outlet context={[data, error, loading, itemsInCart, addToCart]} />
     </>
   );
