@@ -6,7 +6,7 @@ const ShoppingCart = ({ cartItems }) => {
   let total = 0;
   if (cartItems.length != 0) {
     for (let i = 0; i < cartItems.length; i++) {
-      total += cartItems[i].price;
+      total += cartItems[i].price * cartItems[i].quantity;
     }
   }
 
