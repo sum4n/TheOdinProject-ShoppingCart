@@ -14,7 +14,7 @@ describe("App component", () => {
     );
     expect(screen.getByText("The shopping project")).toBeInTheDocument();
     expect(screen.getByText(/Cart/)).toBeInTheDocument();
-    expect(screen.getAllByRole("li"));
+    expect(screen.getByRole("link", { name: /home/i }));
   });
 });
 

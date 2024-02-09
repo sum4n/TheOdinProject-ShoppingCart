@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`NavigationBar component > renders with 10 cart items 1`] = `
+<div>
+  <nav
+    class="_nav_982763"
+  >
+    <p
+      class="_title_982763"
+    >
+      The shopping project
+    </p>
+    <ul
+      class="_list_982763"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shopPage"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <p>
+      Cart: 
+      10
+    </p>
+  </nav>
+</div>
+`;
