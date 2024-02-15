@@ -1,13 +1,19 @@
 import ShopItems from "../ShopItems/ShopItems";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import styles from "./ShopPage.module.css";
-import { useOutletContext } from "react-router-dom";
+import NavigationBar from "../NavigationBar/NavigationBar";
 
-const ShopPage = () => {
-  const [data, error, loading, itemsInCart, addToCart] = useOutletContext();
-
+const ShopPage = ({
+  data,
+  error,
+  loading,
+  itemsInCart,
+  totalItemsInCart,
+  addToCart,
+}) => {
   return (
     <>
+      <NavigationBar totalItemsInCart={totalItemsInCart} />
       <div className={styles.shopPageBody}>
         <div className={styles.shopPageContents}>
           <div className={styles.shopPageItems}>
