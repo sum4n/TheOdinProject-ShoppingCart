@@ -10,7 +10,7 @@ const NavigationBar = ({ totalItemsInCart }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="shopPage">Products</Link>
+          <Link to="/shopPage">Products</Link>
         </li>
         <li>
           <a href="#">Contact</a>
