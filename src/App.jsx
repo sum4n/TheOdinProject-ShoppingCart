@@ -1,8 +1,14 @@
-import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import HomePageBody from "./components/HomePageBody/HomePageBody";
+import ShopPage from "./components/ShopPage/ShopPage";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
+  // using fallback value 'home' for the destructured params object
+  // this will show the home page by default
+  const { name = "home" } = useParams();
+
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -43,19 +49,31 @@ function App() {
     e.target.previousSibling.children[1].value = 1;
   };
 
-  let totalItems = 0;
+  let totalItemsInCart = 0;
   if (itemsInCart.length != 0) {
     for (let i = 0; i < itemsInCart.length; i++) {
-      totalItems += itemsInCart[i].quantity;
+      totalItemsInCart += itemsInCart[i].quantity;
     }
   }
 
-  // console.log({ totalItems });
+  // console.log({ totalItemsInCart });
 
   return (
     <>
-      <NavigationBar itemsInCart={totalItems} />
-      <Outlet context={[data, error, loading, itemsInCart, addToCart]} />
+      {name === "home" ? (
+        <HomePageBody totalItemsInCart={totalItemsInCart} />
+      ) : name === "shopPage" ? (
+        <ShopPage
+          data={data}
+          error={error}
+          loading={loading}
+          itemsInCart={itemsInCart}
+          totalItemsInCart={totalItemsInCart}
+          addToCart={addToCart}
+        />
+      ) : (
+        <ErrorPage />
+      )}
     </>
   );
 }
