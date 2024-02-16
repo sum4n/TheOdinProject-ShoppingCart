@@ -1,7 +1,45 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`HomePageBody component > renders with 1 para, 1 link and 1 image 1`] = `
+exports[`HomePageBody component > renders with prop totalItemsInCart with value 5 1`] = `
 <div>
+  <nav
+    class="_nav_982763"
+  >
+    <p
+      class="_title_982763"
+    >
+      The shopping project
+    </p>
+    <ul
+      class="_list_982763"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shopPage"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <p>
+      Cart: 
+      5
+    </p>
+  </nav>
   <div
     class="_body_2c184d"
   >

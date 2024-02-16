@@ -4,10 +4,10 @@ import HomePageBody from "./HomePageBody";
 import { MemoryRouter } from "react-router-dom";
 
 describe("HomePageBody component", () => {
-  it("renders with 1 para, 1 link and 1 image", () => {
+  it("renders with prop totalItemsInCart with value 5", () => {
     const { container } = render(
       <MemoryRouter>
-        <HomePageBody />
+        <HomePageBody totalItemsInCart={5} />
       </MemoryRouter>
     );
 
