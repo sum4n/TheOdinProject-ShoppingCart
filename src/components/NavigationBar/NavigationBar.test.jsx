@@ -7,7 +7,7 @@ describe("NavigationBar component", () => {
   it("renders correctly", () => {
     render(
       <MemoryRouter>
-        <NavigationBar itemsInCart={1} />
+        <NavigationBar totalItemsInCart={1} />
       </MemoryRouter>
     );
     expect(screen.getByText(/the shopping project/i)).toBeInTheDocument();
@@ -20,7 +20,7 @@ describe("NavigationBar component", () => {
   it("renders with 10 cart items", () => {
     const { container } = render(
       <MemoryRouter>
-        <NavigationBar itemsInCart={10} />
+        <NavigationBar totalItemsInCart={10} />
       </MemoryRouter>
     );
 

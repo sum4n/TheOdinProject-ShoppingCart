@@ -10,7 +10,8 @@ const NavigationBar = ({ totalItemsInCart }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          {/* '/shopPage' is needed because only 'shopPage' makes /shopPage/shopPage link which is invalid */}
+          {/* '/shopPage' is needed because only 'shopPage' 
+          makes /shopPage/shopPage link which is invalid */}
           <Link to="/shopPage">Products</Link>
         </li>
         <li>
