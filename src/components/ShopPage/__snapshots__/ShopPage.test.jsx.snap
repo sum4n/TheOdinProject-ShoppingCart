@@ -1,0 +1,327 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ShopPage component > Renders with data 1`] = `
+<div>
+  <nav
+    class="_nav_982763"
+  >
+    <p
+      class="_title_982763"
+    >
+      The shopping project
+    </p>
+    <ul
+      class="_list_982763"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shopPage"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <p>
+      Cart: 
+    </p>
+  </nav>
+  <div
+    class="_shopPageBody_fc8f50"
+  >
+    <div
+      class="_shopPageContents_fc8f50"
+    >
+      <div
+        class="_shopPageItems_fc8f50"
+      >
+        <div
+          class="_shopItem_3f94c9"
+        >
+          <img
+            alt="This is shop item"
+            class="_itemImg_3f94c9"
+          />
+          <div>
+            <p
+              class="_itemTitle_3f94c9"
+            >
+              Product1
+            </p>
+            <p>
+              A product
+            </p>
+            <p>
+              3
+               of 
+              10
+            </p>
+            <p
+              class="_priceText_3f94c9"
+            >
+              Price: 
+              5$
+              $
+            </p>
+            <div>
+              <label
+                class="_inputLabel_3f94c9"
+                for="quantity"
+              >
+                Quantity
+              </label>
+              <input
+                class="_inputBox_3f94c9"
+                id="quantity"
+                max="10"
+                min="1"
+                name="quantity"
+                type="number"
+                value="1"
+              />
+            </div>
+            <button
+              id="1"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
+        <div
+          class="_shopItem_3f94c9"
+        >
+          <img
+            alt="This is shop item"
+            class="_itemImg_3f94c9"
+          />
+          <div>
+            <p
+              class="_itemTitle_3f94c9"
+            >
+              Product2
+            </p>
+            <p>
+              B product
+            </p>
+            <p>
+              4
+               of 
+              8
+            </p>
+            <p
+              class="_priceText_3f94c9"
+            >
+              Price: 
+              10$
+              $
+            </p>
+            <div>
+              <label
+                class="_inputLabel_3f94c9"
+                for="quantity"
+              >
+                Quantity
+              </label>
+              <input
+                class="_inputBox_3f94c9"
+                id="quantity"
+                max="10"
+                min="1"
+                name="quantity"
+                type="number"
+                value="1"
+              />
+            </div>
+            <button
+              id="2"
+            >
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="_cartBody_b6b9fb"
+      >
+        <p>
+          Items in your shopping cart
+        </p>
+        <ol />
+        <p>
+          Total amount: 
+          0
+          $
+        </p>
+        <button
+          class="_btnCheckout_b6b9fb"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ShopPage component > Renders with error prop and displays error 1`] = `
+<div>
+  <nav
+    class="_nav_982763"
+  >
+    <p
+      class="_title_982763"
+    >
+      The shopping project
+    </p>
+    <ul
+      class="_list_982763"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shopPage"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <p>
+      Cart: 
+    </p>
+  </nav>
+  <div
+    class="_shopPageBody_fc8f50"
+  >
+    <div
+      class="_shopPageContents_fc8f50"
+    >
+      <div
+        class="_shopPageItems_fc8f50"
+      >
+        <p>
+          A network error was encountered.
+        </p>
+      </div>
+      <div
+        class="_cartBody_b6b9fb"
+      >
+        <p>
+          Items in your shopping cart
+        </p>
+        <ol />
+        <p>
+          Total amount: 
+          0
+          $
+        </p>
+        <button
+          class="_btnCheckout_b6b9fb"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ShopPage component > Renders with loading prop and display loading 1`] = `
+<div>
+  <nav
+    class="_nav_982763"
+  >
+    <p
+      class="_title_982763"
+    >
+      The shopping project
+    </p>
+    <ul
+      class="_list_982763"
+    >
+      <li>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/shopPage"
+        >
+          Products
+        </a>
+      </li>
+      <li>
+        <a
+          href="#"
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+    <p>
+      Cart: 
+    </p>
+  </nav>
+  <div
+    class="_shopPageBody_fc8f50"
+  >
+    <div
+      class="_shopPageContents_fc8f50"
+    >
+      <div
+        class="_shopPageItems_fc8f50"
+      >
+        <p>
+          Loading...
+        </p>
+      </div>
+      <div
+        class="_cartBody_b6b9fb"
+      >
+        <p>
+          Items in your shopping cart
+        </p>
+        <ol />
+        <p>
+          Total amount: 
+          0
+          $
+        </p>
+        <button
+          class="_btnCheckout_b6b9fb"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
