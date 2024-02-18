@@ -16,14 +16,20 @@ function App() {
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products", { mode: "cors" })
-      .then((res) => {
-        if (res.status >= 400) {
+      .then((response) => {
+        if (response.status >= 400) {
           throw new Error("server error");
         }
-        return res.json();
+        return response.json();
       })
-      .then((json) => setData(json))
-      .catch((error) => setError(error))
+      .then((json) => {
+        setData(json);
+        setError(null);
+      })
+      .catch((error) => {
+        setError(error);
+        setData(null);
+      })
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,6 +64,9 @@ function App() {
 
   // console.log({ totalItemsInCart });
 
+  // Render HomePageBody by default
+  // If route param is 'shopPage', render ShopPage
+  // Else (it will be bad route), render ErrorPage
   return (
     <>
       {name === "home" ? (
