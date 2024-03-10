@@ -28,7 +28,7 @@ const ShopPage = ({ data, error, loading, itemsInCart, addToCart }) => {
                 );
               })}
           </div>
-          <ShoppingCart cartItems={itemsInCart} />
+          {/* <ShoppingCart cartItems={itemsInCart} /> */}
         </div>
       </div>
     </>
