@@ -17,8 +17,11 @@ const NavigationBar = ({ totalItemsInCart }) => {
         <li>
           <a href="#">Contact</a>
         </li>
+        <li>
+          <Link to="/shoppingCart">Cart: {totalItemsInCart}</Link>
+        </li>
       </ul>
-      <p>Cart: {totalItemsInCart}</p>
+      {/* <p>Cart: {totalItemsInCart}</p> */}
     </nav>
   );
 };
