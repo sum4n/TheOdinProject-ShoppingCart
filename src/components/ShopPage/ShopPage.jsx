@@ -3,17 +3,9 @@ import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import styles from "./ShopPage.module.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
 
-const ShopPage = ({
-  data,
-  error,
-  loading,
-  itemsInCart,
-  totalItemsInCart,
-  addToCart,
-}) => {
+const ShopPage = ({ data, error, loading, itemsInCart, addToCart }) => {
   return (
     <>
-      <NavigationBar totalItemsInCart={totalItemsInCart} />
       <div className={styles.shopPageBody}>
         <div className={styles.shopPageContents}>
           <div className={styles.shopPageItems}>

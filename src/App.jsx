@@ -79,7 +79,6 @@ function App() {
           error={error}
           loading={loading}
           itemsInCart={itemsInCart}
-          totalItemsInCart={totalItemsInCart}
           addToCart={addToCart}
         />
       ) : (
