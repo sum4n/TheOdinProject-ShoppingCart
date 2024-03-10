@@ -12,14 +12,14 @@ const ShopItems = ({
   return (
     <div className={styles.shopItem}>
       <img className={styles.itemImg} src={imgSource} alt="This is shop item" />
-      <div>
+      <div className={styles.itemText}>
         <p className={styles.itemTitle}>{title}</p>
-        <p>{description}</p>
+        {/* <p>{description}</p> */}
         <p>
           {rating.rate} of {rating.count}
         </p>
         <p className={styles.priceText}>Price: {price}$</p>
-        <div>
+        {/* <div>
           <label className={styles.inputLabel} htmlFor="quantity">
             Quantity
           </label>
@@ -35,7 +35,7 @@ const ShopItems = ({
         </div>
         <button id={index} onClick={handleAddToCart}>
           Add to cart
-        </button>
+        </button> */}
       </div>
     </div>
   );
