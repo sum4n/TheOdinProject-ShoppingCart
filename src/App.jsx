@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import HomePageBody from "./components/HomePageBody/HomePageBody";
 import ShopPage from "./components/ShopPage/ShopPage";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 function App() {
   // using fallback value 'home' for the destructured params object
@@ -69,8 +70,9 @@ function App() {
   // Else (it will be bad route), render ErrorPage
   return (
     <>
+      <NavigationBar totalItemsInCart={totalItemsInCart} />
       {name === "home" ? (
-        <HomePageBody totalItemsInCart={totalItemsInCart} />
+        <HomePageBody />
       ) : name === "shopPage" ? (
         <ShopPage
           data={data}
