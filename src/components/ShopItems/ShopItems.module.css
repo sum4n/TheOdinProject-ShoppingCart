@@ -18,6 +18,10 @@
   background-color: burlywood;
 }
 
+.shopItem:hover {
+  box-shadow: 2px 2px 24px 12px rgb(255, 255, 255);
+}
+
 .itemTitle {
   margin: 0;
 }
