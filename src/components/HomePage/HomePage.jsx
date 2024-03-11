@@ -1,4 +1,4 @@
-import styles from "./HomePageBody.module.css";
+import styles from "./HomePage.module.css";
 import image from "./shopping_cart.webp";
 import { Link } from "react-router-dom";
 

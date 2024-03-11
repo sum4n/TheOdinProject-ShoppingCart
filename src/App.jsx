@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import HomePageBody from "./components/HomePageBody/HomePageBody";
+import HomePage from "./components/HomePage/HomePage";
 import ShopPage from "./components/ShopPage/ShopPage";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
@@ -73,7 +73,7 @@ function App() {
     <>
       <NavigationBar totalItemsInCart={totalItemsInCart} />
       {name === "home" ? (
-        <HomePageBody />
+        <HomePage />
       ) : name === "shopPage" ? (
         <ShopPage
           data={data}
