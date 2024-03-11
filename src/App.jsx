@@ -74,7 +74,7 @@ function App() {
       <NavigationBar totalItemsInCart={totalItemsInCart} />
       {name === "home" ? (
         <HomePage />
-      ) : name === "shopPage" ? (
+      ) : name === "productsPage" ? (
         <ProductsPage
           data={data}
           error={error}

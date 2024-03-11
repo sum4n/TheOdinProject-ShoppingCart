@@ -12,7 +12,7 @@ const NavigationBar = ({ totalItemsInCart }) => {
         <li>
           {/* '/shopPage' is needed because only 'shopPage' 
           makes /shopPage/shopPage link which is invalid */}
-          <Link to="/shopPage">Products</Link>
+          <Link to="/productsPage">Products</Link>
         </li>
         <li>
           <a href="#">Contact</a>
