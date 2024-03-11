@@ -5,6 +5,7 @@ import ProductsPage from "./components/ShopPage/ProductsPage";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
 
 function App() {
   // using fallback value 'home' for the destructured params object
@@ -84,6 +85,8 @@ function App() {
         />
       ) : name == "shoppingCart" ? (
         <ShoppingCart cartItems={itemsInCart} />
+      ) : name == "productDetail" ? (
+        <ProductDetail data={data} addToCart={addToCart} />
       ) : (
         <ErrorPage />
       )}
