@@ -2,6 +2,8 @@
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import styles from "./ProductsPage.module.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
+import { useNavigate } from "react-router-dom";
+import ProductDetail from "../ProductDetail/ProductDetail";
 
 const ProductsPage = ({ data, error, loading, itemsInCart, addToCart }) => {
   return (
@@ -44,8 +46,20 @@ const Product = ({
   imgSource,
   handleAddToCart,
 }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (index) => {
+    // Passing a state value to be accessed by destination url via useLocation.
+    navigate("/productDetail", { state: { key: index } });
+  };
+
   return (
-    <div className={styles.productStyle}>
+    <div
+      className={styles.productStyle}
+      onClick={() => {
+        handleClick(index);
+      }}
+    >
       <img
         className={styles.productImg}
         src={imgSource}

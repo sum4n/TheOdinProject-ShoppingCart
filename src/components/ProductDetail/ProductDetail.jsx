@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 
 // const handleAddToCart = () => {
@@ -5,21 +6,25 @@ import styles from "./ProductDetail.module.css";
 // };
 
 const ProductDetail = ({ data, addToCart }) => {
-  console.log(data[0].title);
+  // Gets the state, passed by useNavigate hook.
+  const location = useLocation();
+  // console.log(location.state.key);
+  const key = parseInt(location.state.key) - 1;
+  // console.log({ key });
   return (
     <div className={styles.shopItem}>
       <img
         className={styles.itemImg}
-        src={data[0].image}
+        src={data[key].image}
         alt="This is shop item"
       />
       <div className={styles.itemText}>
-        <p className={styles.itemTitle}>{data[0].title}</p>
+        <p className={styles.itemTitle}>{data[key].title}</p>
         {/* <p>{description}</p> */}
         <p>
-          {data[0].rating.rate} of {data[0].rating.count}
+          {data[key].rating.rate} of {data[key].rating.count}
         </p>
-        <p className={styles.priceText}>Price: {data[0].price}$</p>
+        <p className={styles.priceText}>Price: {data[key].price}$</p>
         <div>
           <label className={styles.inputLabel} htmlFor="quantity">
             Quantity
@@ -34,7 +39,7 @@ const ProductDetail = ({ data, addToCart }) => {
             defaultValue={1}
           />
         </div>
-        <button id={data[0].id} onClick={addToCart}>
+        <button id={data[key].id} onClick={addToCart}>
           Add to cart
         </button>
       </div>
