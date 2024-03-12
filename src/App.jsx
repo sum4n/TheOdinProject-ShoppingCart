@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
-import ProductsPage from "./components/ShopPage/ProductsPage";
+import ProductsPage from "./components/ProductsPage/ProductsPage";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
