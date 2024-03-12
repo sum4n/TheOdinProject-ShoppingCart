@@ -11,20 +11,23 @@ const ProductDetail = ({ data, addToCart }) => {
   // console.log(location.state.key);
   const key = parseInt(location.state.key) - 1;
   // console.log({ key });
+  const product = data[key];
+  // console.log(product);
+
   return (
     <div className={styles.shopItem}>
       <img
         className={styles.itemImg}
-        src={data[key].image}
+        src={product.image}
         alt="This is shop item"
       />
       <div className={styles.itemText}>
-        <p className={styles.itemTitle}>{data[key].title}</p>
+        <p className={styles.itemTitle}>{product.title}</p>
         {/* <p>{description}</p> */}
         <p>
-          {data[key].rating.rate} of {data[key].rating.count}
+          {product.rating.rate} of {product.rating.count}
         </p>
-        <p className={styles.priceText}>Price: {data[key].price}$</p>
+        <p className={styles.priceText}>Price: {product.price}$</p>
         <div>
           <label className={styles.inputLabel} htmlFor="quantity">
             Quantity
@@ -39,7 +42,7 @@ const ProductDetail = ({ data, addToCart }) => {
             defaultValue={1}
           />
         </div>
-        <button id={data[key].id} onClick={addToCart}>
+        <button id={product.id} onClick={addToCart}>
           Add to cart
         </button>
       </div>
