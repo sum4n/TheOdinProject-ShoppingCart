@@ -23,7 +23,7 @@ const ShoppingCart = ({ cartItems }) => {
                 <div>
                   <p>{item.title} </p>
                   <p>Quantity: {item.quantity}</p>
-                  <p>Price: {item.quantity * item.price}</p>
+                  <p>Price: {item.quantity * item.price}$</p>
                 </div>
               </li>
             </div>
