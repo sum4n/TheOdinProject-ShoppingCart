@@ -1,21 +1,19 @@
 .shopItem {
-  /* border: 2px solid black; */
   border-radius: 4px;
 
   display: flex;
-  flex-direction: column;
-  /* flex-wrap: nowrap; */
-  /* justify-content: space-between; */
-  gap: 8px;
-  /* align-items: center; */
+  flex-direction: row;
+  gap: 4%;
+  align-items: center;
 
-  /* height: 450px; */
-  width: 300px;
+  height: 50vh;
 
-  padding-bottom: 4px;
+  padding: 2% 2% 2% 2%;
 
   box-shadow: 0px 0px 8px rgb(0, 0, 0);
   background-color: burlywood;
+
+  margin: 2% 2% 0% 2%;
 }
 
 .shopItem:hover {
@@ -24,11 +22,18 @@
 
 .itemTitle {
   margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .itemImg {
   height: 300px;
   width: 300px;
+}
+
+.priceText {
+  font-size: 1.5rem;
 }
 
 .inputLabel {
@@ -42,4 +47,8 @@
 
 .itemText {
   padding: 4px;
+}
+
+.button {
+  margin-top: 24px;
 }

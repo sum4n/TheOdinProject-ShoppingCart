@@ -8,7 +8,7 @@ const ProductDetail = ({ data, addToCart }) => {
   const key = parseInt(location.state.key) - 1;
   // console.log({ key });
   const product = data[key];
-  // console.log(product);
+  console.log(product);
 
   return (
     <div className={styles.shopItem}>
@@ -19,7 +19,7 @@ const ProductDetail = ({ data, addToCart }) => {
       />
       <div className={styles.itemText}>
         <p className={styles.itemTitle}>{product.title}</p>
-        {/* <p>{description}</p> */}
+        <p>{product.description}</p>
         <p>
           {product.rating.rate} of {product.rating.count}
         </p>
@@ -39,7 +39,7 @@ const ProductDetail = ({ data, addToCart }) => {
           />
         </div>
         <button
-          id={product.id}
+          className={styles.button}
           onClick={() => {
             let quantity = document.getElementById("quantity").value;
 
