@@ -1,7 +1,7 @@
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = ({ cartItems }) => {
-  // console.log(cartItems);
+  console.log(cartItems);
 
   let total = 0;
   if (cartItems.length != 0) {
@@ -12,17 +12,24 @@ const ShoppingCart = ({ cartItems }) => {
 
   return (
     <div className={styles.cartBody}>
-      <p>Items in your shopping cart</p>
+      <h1>Shopping Cart</h1>
       <ol>
         {cartItems.map((item) => {
           return (
-            <li key={item.id}>
-              {item.title}
-              {" X"}
-              {item.quantity}
-            </li>
+            <div>
+              <hr />
+              <li className={styles.itemList} key={item.id}>
+                <img className={styles.itemImage} src={item.image} alt="" />
+                <div>
+                  <p>{item.title} </p>
+                  <p>Quantity: {item.quantity}</p>
+                  <p>Price: {item.quantity * item.price}</p>
+                </div>
+              </li>
+            </div>
           );
         })}
+        <hr />
       </ol>
       <p>Total amount: {Math.round(total * 100) / 100}$</p>
       <button className={styles.btnCheckout}>Checkout</button>
