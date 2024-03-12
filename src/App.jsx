@@ -36,26 +36,18 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
-  const addToCart = (e, data) => {
-    let clickedItem = data[e.target.id - 1];
-    // get quantity from Input Quantity
-    let quantity = parseInt(e.target.previousSibling.children[1].value);
+  const addToCart = (product, quantity) => {
+    quantity = parseInt(quantity);
     // If item is unique add it to cart, else increase its quantity
-    if (!itemsInCart.includes(clickedItem)) {
+    if (!itemsInCart.includes(product)) {
       // All items objects gets quantity "property" with value input quantity
-      clickedItem.quantity = quantity;
-      setItemsInCart([...itemsInCart, clickedItem]);
+      product.quantity = quantity;
+      setItemsInCart([...itemsInCart, product]);
     } else {
-      let indexOfIncreasedProduct = itemsInCart.indexOf(clickedItem);
-      itemsInCart[indexOfIncreasedProduct].quantity += quantity;
+      let indexOfProduct = itemsInCart.indexOf(product);
+      itemsInCart[indexOfProduct].quantity += quantity;
       setItemsInCart([...itemsInCart]);
     }
-    // console.log(e.target.previousSibling.children[1].value);
-    // console.log(clickedItem);
-    // console.log(itemsInCart);
-
-    // resets the Quantity input value to 1
-    e.target.previousSibling.children[1].value = 1;
   };
 
   let totalItemsInCart = 0;

@@ -1,10 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 
-// const handleAddToCart = () => {
-//   console.log("hello");
-// };
-
 const ProductDetail = ({ data, addToCart }) => {
   // Gets the state, passed by useNavigate hook.
   const location = useLocation();
@@ -42,7 +38,18 @@ const ProductDetail = ({ data, addToCart }) => {
             defaultValue={1}
           />
         </div>
-        <button id={product.id} onClick={addToCart}>
+        <button
+          id={product.id}
+          onClick={() => {
+            let quantity = document.getElementById("quantity").value;
+
+            addToCart(product, quantity);
+
+            alert(`${product.title} x ${quantity} added to cart`);
+            // reset input box's value to 1
+            document.getElementById("quantity").value = 1;
+          }}
+        >
           Add to cart
         </button>
       </div>
