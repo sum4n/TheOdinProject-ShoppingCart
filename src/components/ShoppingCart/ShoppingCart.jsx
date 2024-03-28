@@ -16,9 +16,9 @@ const ShoppingCart = ({ cartItems }) => {
       <ol>
         {cartItems.map((item) => {
           return (
-            <div>
+            <div key={item.id}>
               <hr />
-              <li className={styles.itemList} key={item.id}>
+              <li className={styles.itemList}>
                 <img className={styles.itemImage} src={item.image} alt="" />
                 <div>
                   <p>{item.title} </p>
