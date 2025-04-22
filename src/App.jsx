@@ -1,17 +1,7 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import HomePage from "./components/HomePage/HomePage";
-import ProductsPage from "./components/ProductsPage/ProductsPage";
-import ErrorPage from "./components/ErrorPage/ErrorPage";
+import { Outlet } from "react-router-dom";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import ProductDetail from "./components/ProductDetail/ProductDetail";
-
 function App() {
-  // using fallback value 'home' for the destructured params object
-  // this will show the home page by default
-  const { name = "home" } = useParams();
-
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -59,29 +49,18 @@ function App() {
 
   // console.log({ totalItemsInCart });
 
-  // Render HomePageBody by default
-  // If route param is 'shopPage', render ShopPage
-  // Else (it will be bad route), render ErrorPage
   return (
     <>
       <NavigationBar totalItemsInCart={totalItemsInCart} />
-      {name === "home" ? (
-        <HomePage />
-      ) : name === "productsPage" ? (
-        <ProductsPage
-          data={data}
-          error={error}
-          loading={loading}
-          itemsInCart={itemsInCart}
-          addToCart={addToCart}
-        />
-      ) : name == "shoppingCart" ? (
-        <ShoppingCart cartItems={itemsInCart} />
-      ) : name == "productDetail" ? (
-        <ProductDetail data={data} addToCart={addToCart} />
-      ) : (
-        <ErrorPage />
-      )}
+      <Outlet
+        context={{
+          data,
+          error,
+          loading,
+          itemsInCart,
+          addToCart,
+        }}
+      />
     </>
   );
 }
