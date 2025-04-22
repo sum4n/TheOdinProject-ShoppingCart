@@ -10,8 +10,6 @@ const NavigationBar = ({ totalItemsInCart }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          {/* '/shopPage' is needed because only 'shopPage' 
-          makes /shopPage/shopPage link which is invalid */}
           <Link to="products">Products</Link>
         </li>
         <li>
@@ -21,7 +19,6 @@ const NavigationBar = ({ totalItemsInCart }) => {
           <Link to="cart">Cart: {totalItemsInCart}</Link>
         </li>
       </ul>
-      {/* <p>Cart: {totalItemsInCart}</p> */}
     </nav>
   );
 };
