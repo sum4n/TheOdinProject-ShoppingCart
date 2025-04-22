@@ -1,11 +1,12 @@
-// import ShopItems from "../ShopItems/ShopItems";
-import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import { Link, useOutletContext } from "react-router-dom";
 import styles from "./ProductsPage.module.css";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import { useNavigate } from "react-router-dom";
 import ProductDetail from "../ProductDetail/ProductDetail";
 
-const ProductsPage = ({ data, error, loading, itemsInCart, addToCart }) => {
+const ProductsPage = () => {
+  const { data, error, loading, itemsInCart, addToCart } = useOutletContext();
+
   return (
     <>
       <div className={styles.shopPageBody}>
@@ -46,33 +47,22 @@ const Product = ({
   imgSource,
   handleAddToCart,
 }) => {
-  const navigate = useNavigate();
-
-  const handleClick = (index) => {
-    // Passing a state value to be accessed by destination url via useLocation.
-    navigate("/productDetail", { state: { key: index } });
-  };
-
   return (
-    <div
-      className={styles.productStyle}
-      onClick={() => {
-        handleClick(index);
-      }}
-    >
-      <img
-        className={styles.productImg}
-        src={imgSource}
-        alt="This is shop item"
-      />
-      <div className={styles.productText}>
-        <p className={styles.productTitle}>{title}</p>
-        {/* <p>{description}</p> */}
-        <p>
-          {rating.rate} of {rating.count}
-        </p>
-        <p className={styles.priceText}>Price: {price}$</p>
-        {/* <div>
+    <Link to={`/products/${index}`}>
+      <div className={styles.productStyle}>
+        <img
+          className={styles.productImg}
+          src={imgSource}
+          alt="This is shop item"
+        />
+        <div className={styles.productText}>
+          <p className={styles.productTitle}>{title}</p>
+          {/* <p>{description}</p> */}
+          <p>
+            {rating.rate} of {rating.count}
+          </p>
+          <p className={styles.priceText}>Price: {price}$</p>
+          {/* <div>
           <label className={styles.inputLabel} htmlFor="quantity">
             Quantity
           </label>
@@ -89,8 +79,9 @@ const Product = ({
         <button id={index} onClick={handleAddToCart}>
           Add to cart
         </button> */}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
