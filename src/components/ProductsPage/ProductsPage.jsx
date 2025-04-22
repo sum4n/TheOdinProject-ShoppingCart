@@ -1,8 +1,5 @@
 import { Link, useOutletContext } from "react-router-dom";
 import styles from "./ProductsPage.module.css";
-import NavigationBar from "../NavigationBar/NavigationBar";
-import { useNavigate } from "react-router-dom";
-import ProductDetail from "../ProductDetail/ProductDetail";
 
 const ProductsPage = () => {
   const { data, error, loading, itemsInCart, addToCart } = useOutletContext();
