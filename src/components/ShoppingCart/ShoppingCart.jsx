@@ -1,12 +1,15 @@
+import { useOutletContext } from "react-router-dom";
 import styles from "./ShoppingCart.module.css";
 
-const ShoppingCart = ({ cartItems }) => {
-  console.log(cartItems);
+const ShoppingCart = () => {
+  const { itemsInCart } = useOutletContext();
+
+  // console.log(itemsInCart);
 
   let total = 0;
-  if (cartItems.length != 0) {
-    for (let i = 0; i < cartItems.length; i++) {
-      total += cartItems[i].price * cartItems[i].quantity;
+  if (itemsInCart.length != 0) {
+    for (let i = 0; i < itemsInCart.length; i++) {
+      total += itemsInCart[i].price * itemsInCart[i].quantity;
     }
   }
 
@@ -14,7 +17,7 @@ const ShoppingCart = ({ cartItems }) => {
     <div className={styles.cartBody}>
       <h1>Shopping Cart</h1>
       <ol>
-        {cartItems.map((item) => {
+        {itemsInCart.map((item) => {
           return (
             <div key={item.id}>
               <hr />
