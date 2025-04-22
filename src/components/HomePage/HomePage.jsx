@@ -8,7 +8,7 @@ const HomePage = () => {
       <div className={styles.body}>
         <div className={styles.divText}>
           <p>Welcome to Odin Project Shopping Cart</p>
-          <Link className={styles.btnShop} to="productsPage">
+          <Link className={styles.btnShop} to="products">
             Shop
           </Link>
         </div>
