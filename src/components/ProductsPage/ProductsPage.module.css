@@ -21,6 +21,7 @@
   /* flex-direction: column; */
   flex-wrap: wrap;
   gap: 40px;
+  justify-content: space-evenly;
 }
 
 .productStyle {
@@ -34,7 +35,7 @@
   gap: 8px;
   /* align-items: center; */
 
-  /* height: 450px; */
+  height: 450px;
   width: 300px;
 
   padding-bottom: 4px;
@@ -45,6 +46,10 @@
 
 .productStyle:hover {
   box-shadow: 2px 2px 24px 12px rgb(255, 255, 255);
+}
+
+a:hover {
+  color: blue;
 }
 
 .productTitle {
