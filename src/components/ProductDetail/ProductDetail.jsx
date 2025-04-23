@@ -6,11 +6,11 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
 
   function handleIncrement() {
-    if (quantity < 10) setQuantity(quantity + 1);
+    if (quantity < 10) setQuantity(parseInt(quantity) + 1);
   }
 
   function handleDecrement() {
-    if (quantity > 1) setQuantity(quantity - 1);
+    if (quantity > 1) setQuantity(parseInt(quantity) - 1);
   }
 
   const { productId } = useParams();
