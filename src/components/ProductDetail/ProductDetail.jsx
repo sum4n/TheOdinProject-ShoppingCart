@@ -1,7 +1,18 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
+import { useState } from "react";
 
 const ProductDetail = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  function handleIncrement() {
+    if (quantity < 10) setQuantity(quantity + 1);
+  }
+
+  function handleDecrement() {
+    if (quantity > 1) setQuantity(quantity - 1);
+  }
+
   const { productId } = useParams();
   const { data, error, loading, addToCart } = useOutletContext();
 
@@ -76,8 +87,16 @@ const ProductDetail = () => {
                 name="quantity"
                 max={10}
                 min={1}
-                defaultValue={1}
+                // defaultValue={1}
+                value={quantity}
+                onChange={(event) => setQuantity(event.target.value)}
               />
+              <button onClick={handleIncrement} className={styles.btnQuantity}>
+                +
+              </button>
+              <button onClick={handleDecrement} className={styles.btnQuantity}>
+                -
+              </button>
             </div>
             <button
               className={styles.button}
