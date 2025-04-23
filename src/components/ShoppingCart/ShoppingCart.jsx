@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
@@ -24,7 +24,12 @@ const ShoppingCart = () => {
               <li className={styles.itemList}>
                 <img className={styles.itemImage} src={item.image} alt="" />
                 <div>
-                  <p>{item.title} </p>
+                  <Link
+                    to={`/products/${item.id}`}
+                    className={styles.itemTitle}
+                  >
+                    {item.title}
+                  </Link>
                   <p>Quantity: {item.quantity}</p>
                   <p>Price: {item.quantity * item.price}$</p>
                 </div>
