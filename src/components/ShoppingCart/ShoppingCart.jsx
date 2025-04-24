@@ -34,6 +34,12 @@ const ShoppingCart = () => {
     }
   }
 
+  function handleDeleteFromCart(item) {
+    if (confirm("Do you want to delete this item?")) {
+      deleteFromCart(item);
+    }
+  }
+
   return (
     <div className={styles.cartBody}>
       <h1>Shopping Cart</h1>
@@ -80,16 +86,15 @@ const ShoppingCart = () => {
                       <button
                         onClick={() => handleDecrement(item, item.quantity)}
                         className={styles.btnQuantity}
-                        // disabled={item.quantity}
                       >
                         -
                       </button>
                     ) : (
                       <button
-                        onClick={() => deleteFromCart(item)}
-                        className={styles.btnQuantity}
+                        onClick={() => handleDeleteFromCart(item)}
+                        className={styles.btnDelete}
                       >
-                        Delete
+                        Remove from cart
                       </button>
                     )}
                   </div>
