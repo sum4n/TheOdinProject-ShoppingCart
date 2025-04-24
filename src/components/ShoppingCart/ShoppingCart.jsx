@@ -2,7 +2,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
-  const { itemsInCart } = useOutletContext();
+  const { itemsInCart, addToCart } = useOutletContext();
 
   // console.log(itemsInCart);
 
@@ -10,6 +10,25 @@ const ShoppingCart = () => {
   if (itemsInCart.length != 0) {
     for (let i = 0; i < itemsInCart.length; i++) {
       total += itemsInCart[i].price * itemsInCart[i].quantity;
+    }
+  }
+
+  function inputHandler(item, quantity) {
+    if (Number(quantity) && parseInt(quantity) > 0 && parseInt(quantity) < 11) {
+      addToCart(item, quantity);
+    } else {
+      alert("Invalid input");
+    }
+  }
+
+  function handleIncrement(item, quantity) {
+    if (parseInt(quantity) < 10) {
+      addToCart(item, quantity + 1);
+    }
+  }
+  function handleDecrement(item, quantity) {
+    if (parseInt(quantity) > 1) {
+      addToCart(item, quantity - 1);
     }
   }
 
@@ -30,8 +49,40 @@ const ShoppingCart = () => {
                   >
                     {item.title}
                   </Link>
-                  <p>Quantity: {item.quantity}</p>
-                  <p>Price: {item.quantity * item.price}$</p>
+                  <p>Price: {item.price}$</p>
+                  <div>
+                    <label className={styles.inputLabel} htmlFor="quantity">
+                      Quantity
+                    </label>
+                    <input
+                      className={styles.inputBox}
+                      type="number"
+                      id="quantity"
+                      name="quantity"
+                      max={10}
+                      min={1}
+                      // defaultValue={1}
+                      value={item.quantity}
+                      onChange={(event) =>
+                        inputHandler(item, event.target.value)
+                      }
+                    />
+                    <button
+                      onClick={() => handleIncrement(item, item.quantity)}
+                      className={styles.btnQuantity}
+                      // disabled={item.quantity}
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => handleDecrement(item, item.quantity)}
+                      className={styles.btnQuantity}
+                      // disabled={item.quantity}
+                    >
+                      -
+                    </button>
+                  </div>
+                  <p>Total price: {item.quantity * item.price}$</p>
                 </div>
               </li>
             </div>
