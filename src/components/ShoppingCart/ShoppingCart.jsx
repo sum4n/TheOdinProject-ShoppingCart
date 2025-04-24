@@ -35,7 +35,7 @@ const ShoppingCart = () => {
   }
 
   function handleDeleteFromCart(item) {
-    if (confirm("Do you want to delete this item?")) {
+    if (confirm("Do you want to remove this item from the cart?")) {
       deleteFromCart(item);
     }
   }
@@ -58,7 +58,7 @@ const ShoppingCart = () => {
                     {item.title}
                   </Link>
                   <p>Price: {item.price}$</p>
-                  <div>
+                  <div className={styles.quantityBox}>
                     <label className={styles.inputLabel} htmlFor="quantity">
                       Quantity
                     </label>
