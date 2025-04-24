@@ -2,7 +2,7 @@ import { Link, useOutletContext } from "react-router-dom";
 import styles from "./ShoppingCart.module.css";
 
 const ShoppingCart = () => {
-  const { itemsInCart, addToCart } = useOutletContext();
+  const { itemsInCart, addToCart, deleteFromCart } = useOutletContext();
 
   // console.log(itemsInCart);
 
@@ -76,13 +76,22 @@ const ShoppingCart = () => {
                     >
                       +
                     </button>
-                    <button
-                      onClick={() => handleDecrement(item, item.quantity)}
-                      className={styles.btnQuantity}
-                      // disabled={item.quantity}
-                    >
-                      -
-                    </button>
+                    {item.quantity > 1 ? (
+                      <button
+                        onClick={() => handleDecrement(item, item.quantity)}
+                        className={styles.btnQuantity}
+                        // disabled={item.quantity}
+                      >
+                        -
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => deleteFromCart(item)}
+                        className={styles.btnQuantity}
+                      >
+                        Delete
+                      </button>
+                    )}
                   </div>
                   <p>Total price: {item.quantity * item.price}$</p>
                 </div>
