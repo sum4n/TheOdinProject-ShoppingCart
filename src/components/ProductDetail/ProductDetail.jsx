@@ -1,18 +1,7 @@
 import { useOutletContext, useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
-import { useState } from "react";
 
 const ProductDetail = () => {
-  const [quantity, setQuantity] = useState(1);
-
-  function handleIncrement() {
-    if (quantity < 10) setQuantity(parseInt(quantity) + 1);
-  }
-
-  function handleDecrement() {
-    if (quantity > 1) setQuantity(parseInt(quantity) - 1);
-  }
-
   const { productId } = useParams();
   const { data, error, loading, addToCart } = useOutletContext();
 
@@ -76,38 +65,12 @@ const ProductDetail = () => {
               {product.rating.rate} of {product.rating.count}
             </p>
             <p className={styles.priceText}>Price: {product.price}$</p>
-            <div>
-              <label className={styles.inputLabel} htmlFor="quantity">
-                Quantity
-              </label>
-              <input
-                className={styles.inputBox}
-                type="number"
-                id="quantity"
-                name="quantity"
-                max={10}
-                min={1}
-                // defaultValue={1}
-                value={quantity}
-                onChange={(event) => setQuantity(event.target.value)}
-              />
-              <button onClick={handleIncrement} className={styles.btnQuantity}>
-                +
-              </button>
-              <button onClick={handleDecrement} className={styles.btnQuantity}>
-                -
-              </button>
-            </div>
             <button
               className={styles.button}
               onClick={() => {
-                let quantity = document.getElementById("quantity").value;
-
-                addToCart(product, quantity);
-
-                alert(`${product.title} x ${quantity} added to cart`);
-                // reset input box's value to 1
-                document.getElementById("quantity").value = 1;
+                addToCart(product, 1);
+                alert(`${product.title} added to cart`);
+                // console.log(product);
               }}
             >
               Add to cart
@@ -116,7 +79,6 @@ const ProductDetail = () => {
         </div>
       )}
     </>
-    // <div>ProductDetail</div>
   );
 };
 
