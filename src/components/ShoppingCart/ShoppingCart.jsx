@@ -24,6 +24,8 @@ const ShoppingCart = () => {
   function handleIncrement(item, quantity) {
     if (parseInt(quantity) < 10) {
       addToCart(item, quantity + 1);
+    } else {
+      alert("Can not add more than 10 of the same item.");
     }
   }
   function handleDecrement(item, quantity) {
