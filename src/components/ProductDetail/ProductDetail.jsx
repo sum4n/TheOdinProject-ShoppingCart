@@ -1,4 +1,4 @@
-import { useOutletContext, useParams } from "react-router-dom";
+import { Link, useOutletContext, useParams } from "react-router-dom";
 import styles from "./ProductDetail.module.css";
 
 const ProductDetail = () => {
@@ -37,7 +37,7 @@ const ProductDetail = () => {
   // Because during reload js was coming here before feting the data, causing error.
   // Either use data[key] in jsx directly or use error handling logic the way it is written from top of this page.
   const product = data[key];
-  // console.log(product);
+  console.log(product);
 
   if (data && product === undefined) {
     return (
@@ -65,16 +65,25 @@ const ProductDetail = () => {
               {product.rating.rate} of {product.rating.count}
             </p>
             <p className={styles.priceText}>Price: {product.price}$</p>
-            <button
-              className={styles.button}
-              onClick={() => {
-                addToCart(product, 1);
-                alert(`${product.title} added to cart`);
-                // console.log(product);
-              }}
-            >
-              Add to cart
-            </button>
+            {!product.quantity ? (
+              <button
+                className={styles.button}
+                onClick={() => {
+                  addToCart(product, 1);
+                  alert(`${product.title} added to cart`);
+                  // console.log(product);
+                }}
+              >
+                Add to cart
+              </button>
+            ) : (
+              <>
+                <p>Product added to cart.</p>
+                <Link to={"/cart"} className={styles.goToCart}>
+                  Go to cart
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
