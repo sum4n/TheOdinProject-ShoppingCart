@@ -63,3 +63,22 @@
   height: 24px;
   margin-left: 10px;
 }
+
+.goToCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: rgb(247, 119, 97);
+  box-shadow: 1px 1px 1px black;
+  font-weight: bold;
+  font-size: 14px;
+  color: black;
+}
+
+.goToCart:hover {
+  box-shadow: 2px 2px 4px black;
+  color: black;
+}
