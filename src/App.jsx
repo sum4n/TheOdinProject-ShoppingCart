@@ -26,6 +26,7 @@ function App() {
       .finally(() => setLoading(false));
   }, []);
 
+  // Adds to cart and also increments/decrements quantity.
   const addToCart = (product, quantity) => {
     quantity = parseInt(quantity);
     // If item is unique add it to cart, else increase its quantity
@@ -37,6 +38,16 @@ function App() {
       let indexOfProduct = itemsInCart.indexOf(product);
       itemsInCart[indexOfProduct].quantity = quantity;
       setItemsInCart([...itemsInCart]);
+    }
+  };
+
+  // Delets from cart and set quantity 0
+  const deleteFromCart = (product) => {
+    if (itemsInCart.includes(product)) {
+      let indexOfProduct = itemsInCart.indexOf(product);
+      itemsInCart.splice(indexOfProduct, 1);
+      setItemsInCart([...itemsInCart]);
+      product.quantity = 0;
     }
   };
 
@@ -59,6 +70,7 @@ function App() {
           loading,
           itemsInCart,
           addToCart,
+          deleteFromCart,
         }}
       />
     </>
