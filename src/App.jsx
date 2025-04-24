@@ -35,7 +35,7 @@ function App() {
       setItemsInCart([...itemsInCart, product]);
     } else {
       let indexOfProduct = itemsInCart.indexOf(product);
-      itemsInCart[indexOfProduct].quantity += quantity;
+      itemsInCart[indexOfProduct].quantity = quantity;
       setItemsInCart([...itemsInCart]);
     }
   };
