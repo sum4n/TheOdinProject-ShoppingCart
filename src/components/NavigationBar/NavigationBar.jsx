@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 const NavigationBar = ({ totalItemsInCart }) => {
   return (
     <nav className={styles.nav}>
-      <p className={styles.title}>The shopping project</p>
+      <Link className={styles.title} to="/">
+        The shopping project
+      </Link>
       <ul className={styles.list}>
         <li>
           <Link to="/">Home</Link>
