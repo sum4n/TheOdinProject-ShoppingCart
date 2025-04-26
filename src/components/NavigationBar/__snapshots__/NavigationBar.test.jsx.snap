@@ -1,15 +1,16 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavigationBar component > renders with 10 cart items 1`] = `
+exports[`NavigationBar component > matches snapshot with 10 items in the cart 1`] = `
 <div>
   <nav
     class="_nav_982763"
   >
-    <p
+    <a
       class="_title_982763"
+      href="/"
     >
       The shopping project
-    </p>
+    </a>
     <ul
       class="_list_982763"
     >
@@ -22,7 +23,7 @@ exports[`NavigationBar component > renders with 10 cart items 1`] = `
       </li>
       <li>
         <a
-          href="/shopPage"
+          href="/products"
         >
           Products
         </a>
@@ -34,11 +35,15 @@ exports[`NavigationBar component > renders with 10 cart items 1`] = `
           Contact
         </a>
       </li>
+      <li>
+        <a
+          href="/cart"
+        >
+          Cart: 
+          10
+        </a>
+      </li>
     </ul>
-    <p>
-      Cart: 
-      10
-    </p>
   </nav>
 </div>
 `;
