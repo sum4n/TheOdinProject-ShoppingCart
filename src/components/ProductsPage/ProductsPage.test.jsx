@@ -68,7 +68,7 @@ describe("ProductsPage component", () => {
 
     render(<ProductsPage />);
 
-    screen.debug();
+    // screen.debug();
     expect(screen.getAllByTestId("mock-product-card")).toHaveLength(2);
   });
 
