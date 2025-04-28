@@ -1,0 +1,36 @@
+.productStyle {
+  border-radius: 4px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  height: 450px;
+  width: 300px;
+
+  padding-bottom: 4px;
+
+  box-shadow: 0px 0px 8px rgb(0, 0, 0);
+  background-color: burlywood;
+}
+
+.productStyle:hover {
+  box-shadow: 2px 2px 24px 12px rgb(255, 255, 255);
+}
+
+a:hover {
+  color: blue;
+}
+
+.productTitle {
+  margin: 0;
+}
+
+.productImg {
+  height: 300px;
+  width: 300px;
+}
+
+.productText {
+  padding: 4px;
+}
