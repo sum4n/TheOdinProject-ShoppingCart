@@ -1,11 +1,9 @@
-import { render } from "@testing-library/react";
-import { describe, expect } from "vitest";
-import ShopPage from "./ShopPage";
-import { MemoryRouter } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it, vi, vitest } from "vitest";
+import ProductsPage from "./ProductsPage";
+import { useOutletContext } from "react-router-dom";
 
-const shopPropError = "An error occured";
-const shopPropLoading = "Loading";
-const shopPropData = [
+const productsData = [
   {
     id: 1,
     title: "Product1",
@@ -22,32 +20,71 @@ const shopPropData = [
   },
 ];
 
-describe("ShopPage component", () => {
-  it("Renders with error prop and displays error", () => {
-    const { container } = render(
-      <MemoryRouter>
-        <ShopPage error={shopPropError} itemsInCart={[]} />
-      </MemoryRouter>
-    );
+vi.mock("../ProductCard/ProductCard", () => ({
+  default: () => <div data-testid="mock-product-card" />,
+}));
 
-    expect(container).toMatchSnapshot();
+vi.mock("react-router-dom", () => {
+  const actual = vi.importActual("react-router-dom");
+  return {
+    ...actual,
+    useOutletContext: vitest.fn(),
+  };
+});
+
+describe("ProductsPage component", () => {
+  it("Displays error message if an error is received", () => {
+    useOutletContext.mockReturnValue({
+      data: null,
+      error: true,
+      loading: false,
+    });
+
+    render(<ProductsPage />);
+
+    expect(
+      screen.getByText("A network error was encountered.")
+    ).toBeInTheDocument();
   });
 
-  it("Renders with loading prop and display loading", () => {
-    const { container } = render(
-      <MemoryRouter>
-        <ShopPage loading={shopPropLoading} itemsInCart={[]} />
-      </MemoryRouter>
-    );
-    expect(container).toMatchSnapshot();
+  it("Displays loading message when loading is true", () => {
+    useOutletContext.mockReturnValue({
+      data: null,
+      error: false,
+      loading: true,
+    });
+
+    render(<ProductsPage />);
+
+    expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it("Renders with data", () => {
-    const { container } = render(
-      <MemoryRouter>
-        <ShopPage data={shopPropData} itemsInCart={[]} />
-      </MemoryRouter>
-    );
-    expect(container).toMatchSnapshot();
+  it("Displays 2 ProductCards when passed 2 items in the data", () => {
+    useOutletContext.mockReturnValue({
+      data: productsData,
+      error: false,
+      loading: false,
+    });
+
+    render(<ProductsPage />);
+
+    screen.debug();
+    expect(screen.getAllByTestId("mock-product-card")).toHaveLength(2);
+  });
+
+  it("Displays no ProductCards if data is empty", () => {
+    useOutletContext.mockReturnValue({
+      data: [],
+      error: false,
+      loading: false,
+    });
+
+    render(<ProductsPage />);
+    expect(screen.queryByTestId("mock-product-card")).not.toBeInTheDocument();
+  });
+
+  // Clear mocks between tests.
+  afterEach(() => {
+    vi.clearAllMocks();
   });
 });
