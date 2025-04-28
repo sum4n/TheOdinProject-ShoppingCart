@@ -5,11 +5,7 @@ const ProductCard = ({ title, index, rating, price, imgSource }) => {
   return (
     <Link to={`/products/${index}`}>
       <div className={styles.productStyle}>
-        <img
-          className={styles.productImg}
-          src={imgSource}
-          alt="This is shop item"
-        />
+        <img className={styles.productImg} src={imgSource} alt={title} />
         <div className={styles.productText}>
           <p className={styles.productTitle}>{title}</p>
           <p>

@@ -37,7 +37,7 @@ const ProductDetail = () => {
   // Because during reload js was coming here before feting the data, causing error.
   // Either use data[key] in jsx directly or use error handling logic the way it is written from top of this page.
   const product = data[key];
-  console.log(product);
+  // console.log(product);
 
   if (data && product === undefined) {
     return (

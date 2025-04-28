@@ -33,15 +33,21 @@ describe("ProductCard Component", () => {
   });
 
   it("Has image with correct attributes", () => {
-    const image = screen.getByRole("img", { name: /this is shop item/i });
+    const image = screen.getByRole("img", { name: productData.title });
     expect(image).toBeInTheDocument();
-    expect(image).toHaveAttribute("src", "imageURL");
-    expect(image).toHaveAttribute("alt", "This is shop item");
+    expect(image).toHaveAttribute("src", `${productData.imgSource}`);
+    expect(image).toHaveAttribute("alt", `${productData.title}`);
   });
 
   it("Shows correct product title, rating and price", () => {
-    expect(screen.getByText("Product Title")).toBeInTheDocument();
-    expect(screen.getByText("3.5 of 100")).toBeInTheDocument();
-    expect(screen.getByText("Price: 55.99$")).toBeInTheDocument();
+    expect(screen.getByText(`${productData.title}`)).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        `${productData.rating.rate} of ${productData.rating.count}`
+      )
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(`Price: ${productData.price}$`)
+    ).toBeInTheDocument();
   });
 });
