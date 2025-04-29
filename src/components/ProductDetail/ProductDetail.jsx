@@ -56,7 +56,7 @@ const ProductDetail = () => {
           <img
             className={styles.itemImg}
             src={product.image}
-            alt="This is shop item"
+            alt={product.title}
           />
           <div className={styles.itemText}>
             <p className={styles.itemTitle}>{product.title}</p>
