@@ -1,56 +1,102 @@
-import { render, screen } from "@testing-library/react";
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from "@testing-library/react";
 import App from "./App";
-import { describe, expect } from "vitest";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { describe, expect, vi, vitest } from "vitest";
+import {
+  MemoryRouter,
+  Route,
+  Routes,
+  useOutletContext,
+} from "react-router-dom";
 
-describe("App component", () => {
-  it("renders homePage", () => {
-    render(
-      // Here Memory router is needed because of <Link> in the component
-      // <Link> needs to appear inside router but not in tests.
-      <MemoryRouter initialEntries={["/home"]}>
-        <Routes>
-          <Route path="/:name" element={<App />} />
-        </Routes>
-      </MemoryRouter>
-    );
-    expect(screen.getByText("The shopping project")).toBeInTheDocument();
-    expect(screen.getByText(/Cart:/)).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /home/i }));
-    expect(screen.getByText(/odin project/i)).toBeInTheDocument();
-  });
+const data = [
+  {
+    id: 1,
+    title: "Product A Title",
+    description: "Product A Description",
+    image: "Product A img URL",
+    price: 5,
+    quantity: 1,
+  },
+  {
+    id: 2,
+    title: "Product B Title",
+    description: "Product B description",
+    image: "Product B img URL",
+    price: 10,
+    quantity: 3,
+  },
+];
 
-  it("renders shopPage", () => {
-    render(
-      <MemoryRouter initialEntries={["/shopPage"]}>
-        <Routes>
-          <Route path="/:name" element={<App />} />
-        </Routes>
-      </MemoryRouter>
-    );
-    expect(screen.getByText(/checkout/i)).toBeInTheDocument();
-  });
-
-  it("renders error page", () => {
-    render(
-      <MemoryRouter initialEntries={["/errorRoute"]}>
-        <Routes>
-          <Route path="/:name" element={<App />} />
-        </Routes>
-      </MemoryRouter>
-    );
-    expect(screen.getByText(/route does not exist/i)).toBeInTheDocument();
+// Mock fetch
+window.fetch = vi.fn(() => {
+  return Promise.resolve({
+    json: () => Promise.resolve(data),
   });
 });
 
-// import { describe, it, expect } from "vitest";
+// Mock navigation bar
+vitest.mock("./components/NavigationBar/NavigationBar", () => ({
+  default: ({ totalItemsInCart }) => <div>Cart: {totalItemsInCart}</div>,
+}));
 
-// describe("something truthy and falsy", () => {
-//   it("true to be true", () => {
-//     expect(true).toBe(true);
-//   });
+// Dummy component to receive context form Outlet.
+function DummyComponent() {
+  const { data, loading, error } = useOutletContext();
 
-//   it("false to be false", () => {
-//     expect(false).toBe(false);
-//   });
-// });
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>A network error was encountered.</p>;
+  if (data) return <p>Received {data.length} products.</p>;
+}
+
+function renderAppComponent() {
+  render(
+    <MemoryRouter initialEntries={["/"]}>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<DummyComponent />} />
+        </Route>
+      </Routes>
+    </MemoryRouter>
+  );
+}
+
+describe("App component", () => {
+  it("shows loading while api fetching in progress", async () => {
+    renderAppComponent();
+
+    // screen.debug();
+
+    const loading = screen.getByText("Loading...");
+    expect(loading).toBeInTheDocument();
+
+    await waitForElementToBeRemoved(() => screen.getByText("Loading..."));
+  });
+
+  it("error is shown", async () => {
+    window.fetch.mockImplementationOnce(() => {
+      return Promise.reject({ message: "API is down" });
+    });
+
+    renderAppComponent();
+
+    const errorMessage = await screen.findByText(
+      "A network error was encountered."
+    );
+    // screen.debug();
+    expect(errorMessage).toBeInTheDocument();
+  });
+
+  it("sends data to outlet", async () => {
+    renderAppComponent();
+
+    const productReceivedText = await screen.findByText(
+      `Received ${data.length} products.`
+    );
+    // screen.debug();
+    expect(productReceivedText).toBeInTheDocument();
+  });
+});
