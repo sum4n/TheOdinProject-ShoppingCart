@@ -46,10 +46,14 @@ const ShoppingCart = () => {
       <ol>
         {itemsInCart.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} data-testid="cart-item">
               <hr />
               <li className={styles.itemList}>
-                <img className={styles.itemImage} src={item.image} alt="" />
+                <img
+                  className={styles.itemImage}
+                  src={item.image}
+                  alt={item.title}
+                />
                 <div>
                   <Link
                     to={`/products/${item.id}`}

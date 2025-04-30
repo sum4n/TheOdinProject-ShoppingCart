@@ -1,47 +1,70 @@
 import { render, screen } from "@testing-library/react";
-import { describe, expect } from "vitest";
+import { afterEach, beforeEach, describe, expect, vi } from "vitest";
 import ShoppingCart from "./ShoppingCart";
+import { MemoryRouter, Outlet, Route, Routes } from "react-router-dom";
 
-const itemList = [
+const itemsInCart = [
   {
     id: 1,
-    title: "Product1",
-    description: "A product",
+    title: "Product A Title",
+    description: "Product A Description",
+    image: "Product A img URL",
     price: 5,
     quantity: 1,
   },
   {
     id: 2,
-    title: "Product2",
-    description: "B product",
+    title: "Product B Title",
+    description: "Product B description",
+    image: "Product B img URL",
     price: 10,
-    quantity: 1,
-  },
-];
-
-const itemWithIncreasedQuantity = [
-  {
-    id: 3,
-    title: "ProductX",
-    description: "X product",
-    price: 50,
     quantity: 3,
   },
 ];
 
-describe("ShoppingCart component", () => {
-  it("Renders with list of items", () => {
-    render(<ShoppingCart cartItems={itemList} />);
-    // screen.debug();
+const addToCart = vi.fn();
+const deleteFromCart = vi.fn();
 
-    expect(screen.getByText(/product1/i)).toBeInTheDocument();
-    expect(screen.getByText(/product2/i)).toBeInTheDocument();
-    expect(screen.getByText(/total amount: 15/i)).toBeInTheDocument();
+let renderResult;
+
+describe("ShoppingCart component", () => {
+  beforeEach(() => {
+    renderResult = render(
+      <MemoryRouter initialEntries={["/cart"]}>
+        <Routes>
+          <Route
+            element={
+              <Outlet context={{ itemsInCart, addToCart, deleteFromCart }} />
+            }
+          >
+            <Route path="/cart" element={<ShoppingCart />} />
+          </Route>
+        </Routes>
+      </MemoryRouter>
+    );
   });
 
-  it("Renders with correct price when quantity is increased", () => {
-    render(<ShoppingCart cartItems={itemWithIncreasedQuantity} />);
+  it("Renders exactly 2 items", () => {
+    const items = screen.getAllByTestId("cart-item");
+    expect(items).toHaveLength(2);
+  });
 
-    expect(screen.getByText(/total amount: 150/i)).toBeInTheDocument();
+  it("Renders total amount correctly", () => {
+    let totalPrice = 0;
+    itemsInCart.forEach((item) => {
+      totalPrice += item.price * item.quantity;
+    });
+
+    expect(
+      screen.getByText(`Total amount: ${totalPrice}$`)
+    ).toBeInTheDocument();
+  });
+
+  it("Matches snapshot", () => {
+    expect(renderResult.container).toMatchSnapshot();
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
   });
 });
