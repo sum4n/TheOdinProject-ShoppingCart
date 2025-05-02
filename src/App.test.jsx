@@ -90,6 +90,20 @@ describe("App component", () => {
     expect(errorMessage).toBeInTheDocument();
   });
 
+  it("handles server error responses correctly", async () => {
+    window.fetch.mockImplementationOnce(() => {
+      return Promise.resolve({ status: 500 });
+    });
+
+    renderAppComponent();
+
+    const errorMessage = await screen.findByText(
+      "A network error was encountered."
+    );
+
+    expect(errorMessage).toBeInTheDocument();
+  });
+
   it("sends data to outlet", async () => {
     renderAppComponent();
 
