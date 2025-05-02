@@ -4,7 +4,7 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react";
 import App from "./App";
-import { describe, expect, vi, vitest } from "vitest";
+import { afterEach, beforeEach, describe, expect, vi, vitest } from "vitest";
 import {
   MemoryRouter,
   Route,
@@ -29,13 +29,6 @@ const data = [
     price: 10,
   },
 ];
-
-// Mock fetch
-window.fetch = vi.fn(() => {
-  return Promise.resolve({
-    json: () => Promise.resolve(data),
-  });
-});
 
 // Mock navigation bar
 vitest.mock("./components/NavigationBar/NavigationBar", () => ({
@@ -73,6 +66,16 @@ function renderAppComponent() {
 }
 
 describe("App component", () => {
+  beforeEach(() => {
+    // Mock fetch
+    window.fetch = vi.fn(() => {
+      return Promise.resolve({
+        status: 200,
+        json: () => Promise.resolve(data),
+      });
+    });
+  });
+
   it("shows loading while api fetching in progress", async () => {
     renderAppComponent();
 
@@ -136,5 +139,9 @@ describe("App component", () => {
     await user.click(deleteBtn);
     // screen.debug();
     expect(screen.getByText("Cart: 0")).toBeInTheDocument();
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
   });
 });
