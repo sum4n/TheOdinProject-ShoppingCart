@@ -11,6 +11,7 @@ import {
   Routes,
   useOutletContext,
 } from "react-router-dom";
+import userEvent from "@testing-library/user-event";
 
 const data = [
   {
@@ -19,7 +20,6 @@ const data = [
     description: "Product A Description",
     image: "Product A img URL",
     price: 5,
-    quantity: 1,
   },
   {
     id: 2,
@@ -27,7 +27,6 @@ const data = [
     description: "Product B description",
     image: "Product B img URL",
     price: 10,
-    quantity: 3,
   },
 ];
 
@@ -45,11 +44,20 @@ vitest.mock("./components/NavigationBar/NavigationBar", () => ({
 
 // Dummy component to receive context form Outlet.
 function DummyComponent() {
-  const { data, loading, error } = useOutletContext();
+  const { data, loading, error, addToCart, deleteFromCart } =
+    useOutletContext();
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>A network error was encountered.</p>;
-  if (data) return <p>Received {data.length} products.</p>;
+
+  return (
+    <div>
+      <p>Received {data.length} products.</p>
+
+      <button onClick={() => addToCart(data[0], 2)}>Add Product A</button>
+      <button onClick={() => deleteFromCart(data[0])}>Delete Product A</button>
+    </div>
+  );
 }
 
 function renderAppComponent() {
@@ -112,5 +120,21 @@ describe("App component", () => {
     );
     // screen.debug();
     expect(productReceivedText).toBeInTheDocument();
+  });
+
+  it("can add and delete items form cart and passes totalItemsInCart to NavigationBar", async () => {
+    const user = userEvent.setup();
+
+    renderAppComponent();
+
+    const addBtn = await screen.findByRole("button", { name: "Add Product A" });
+    await user.click(addBtn);
+    // screen.debug();
+    expect(screen.getByText("Cart: 2")).toBeInTheDocument();
+
+    const deleteBtn = screen.getByRole("button", { name: "Delete Product A" });
+    await user.click(deleteBtn);
+    // screen.debug();
+    expect(screen.getByText("Cart: 0")).toBeInTheDocument();
   });
 });
